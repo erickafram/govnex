@@ -1,0 +1,90 @@
+Crie um sistema completo chamado GovNex no Lovable.dev com as seguintes características:
+
+1. **Descrição Geral**:
+- Sistema web para consultas de CNPJ e gestão de créditos
+- Painel administrativo para gerenciamento de usuários e créditos
+- Integração com API de pagamentos Digitopay
+
+2. **Funcionalidades Principais**:
+- Autenticação de usuários (login, cadastro, logout)
+- Dashboard administrativo com:
+  * Visão geral do sistema
+  * Status das APIs
+  * Gerenciamento de usuários
+  * Controle de créditos
+- Módulo de consulta de CNPJ
+- Sistema de pagamentos para compra de créditos:
+  * Geração de link de pagamento
+  * Webhook para confirmação
+  * Verificação de status de pagamento
+- Logs de consultas e pagamentos
+
+3. **Tecnologias**:
+- Frontend: React + TypeScript + Vite + Tailwind CSS
+- Backend: Node.js/Express (para API)
+- Banco de dados: MySQL (estrutura existente)
+- APIs externas:
+  * API de consulta CNPJ (ex: ReceitaWS ou similar)
+  * API de pagamentos Digitopay
+
+4. **Estrutura de Arquivos**:
+- /src/
+  * /api/ - Chamadas para API backend
+  * /components/ - Componentes React
+    - /admin/ - Painel administrativo
+    - /auth/ - Autenticação
+    - /dashboard/ - Dashboard principal
+    - /logs/ - Visualização de logs
+    - /payments/ - Fluxo de pagamentos
+  * /context/ - Contextos React
+  * /hooks/ - Custom hooks
+  * /pages/ - Páginas principais
+  * /styles/ - Estilos globais
+  * /types/ - Tipos TypeScript
+  * /utils/ - Utilitários
+- /server/ - Backend Node.js/Express
+  * /controllers/ - Lógica de endpoints
+  * /models/ - Modelos de dados
+  * /routes/ - Rotas da API
+  * /config/ - Configurações (banco de dados)
+  * /middlewares/ - Middlewares
+
+5. **Requisitos de API Pagamento**:
+- Integração com Digitopay ou similar (MercadoPago, PagSeguro)
+- Deve incluir:
+  * Geração de cobrança/PIX
+  * Webhook para confirmação automática
+  * Verificação manual de status
+  * Logs detalhados de transações
+  * Atualização automática de créditos
+
+6. **Banco de Dados**:
+- Estrutura existente (govnex.sql):
+  * api_tokens - Tokens de autenticação
+  * consultas_log - Histórico de consultas CNPJ
+  * pagamentos - Transações financeiras
+  * usuarios - Cadastro de usuários
+- Relacionamentos:
+  * pagamentos.usuario_id → usuarios.id
+  * consultas_log.dominio_origem → usuarios.dominio
+
+7. **Segurança**:
+- JWT para autenticação
+- Validação de inputs no frontend e backend
+- BCrypt para hash de senhas
+- CORS configurado
+- Proteção de endpoints API com tokens
+- Environment variables para dados sensíveis
+
+8. **Extras**:
+- Sistema responsivo com Tailwind CSS
+- Documentação Swagger para API
+- Configuração via environment variables
+- Testes unitários com Jest/Vitest
+- Docker config para desenvolvimento
+
+Observações:
+- Manter estrutura similar ao projeto original
+- Priorizar funcionalidades principais
+- Documentar endpoints e fluxos importantes
+- Incluir exemplos de requisições/respostas das APIs
