@@ -93,7 +93,7 @@ $usuarios = $stmt->fetchAll();
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="px-6 py-4 text-sm text-gray-800"><?php echo htmlspecialchars($usuario['nome']); ?></td>
                             <td class="px-6 py-4 text-sm text-gray-600"><?php echo htmlspecialchars($usuario['email']); ?></td>
-                            <td class="px-6 py-4 text-sm font-medium <?php echo $usuario['credito'] < 0.05 ? 'text-red-600' : 'text-green-600'; ?>">
+                            <td class="px-6 py-4 text-sm font-medium <?php echo $usuario['credito'] < 0.20 ? 'text-red-600' : 'text-green-600'; ?>">
                                 R$ <?php echo number_format($usuario['credito'], 2, ',', '.'); ?>
                             </td>
                             <td class="px-6 py-4 text-right">

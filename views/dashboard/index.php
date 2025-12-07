@@ -150,7 +150,7 @@ $ultimas_consultas = $stmt->fetchAll();
     <?php else: // Conteúdo principal para usuário com domínio 
     ?>
         <!-- Alertas de Saldo -->
-        <?php if ($usuario['credito'] < 0.05): ?>
+        <?php if ($usuario['credito'] < 0.20): ?>
             <div class="bg-gradient-to-r from-red-50 to-red-100 border-l-4 border-red-500 rounded-lg p-4 mb-6 animate-pulse shadow-sm" role="alert">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
@@ -194,11 +194,11 @@ $ultimas_consultas = $stmt->fetchAll();
                     <div class="flex items-center justify-between">
                         <div>
                             <div class="text-sm font-medium text-gray-500">Saldo Atual</div>
-                            <div class="mt-1 text-2xl font-bold <?php echo ($usuario['credito'] < 10.00) ? (($usuario['credito'] < 0.05) ? 'text-red-600' : 'text-yellow-600') : 'text-emerald-600'; ?>">
+                            <div class="mt-1 text-2xl font-bold <?php echo ($usuario['credito'] < 10.00) ? (($usuario['credito'] < 0.20) ? 'text-red-600' : 'text-yellow-600') : 'text-emerald-600'; ?>">
                                 R$ <?php echo number_format($usuario['credito'], 2, ',', '.'); ?>
                             </div>
                         </div>
-                        <div class="rounded-full p-3 <?php echo ($usuario['credito'] < 10.00) ? (($usuario['credito'] < 0.05) ? 'bg-red-100 text-red-500' : 'bg-yellow-100 text-yellow-500') : 'bg-emerald-100 text-emerald-500'; ?>">
+                        <div class="rounded-full p-3 <?php echo ($usuario['credito'] < 10.00) ? (($usuario['credito'] < 0.20) ? 'bg-red-100 text-red-500' : 'bg-yellow-100 text-yellow-500') : 'bg-emerald-100 text-emerald-500'; ?>">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>

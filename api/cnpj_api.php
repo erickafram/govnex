@@ -97,7 +97,7 @@ try {
         exit;
     }
     
-    if ($usuario['credito'] < 0.05) {
+    if ($usuario['credito'] < 0.20) {
         http_response_code(402);
         error_log("API GovNex - Créditos insuficientes. Domínio: {$dominio}, Crédito atual: {$usuario['credito']}");
         echo json_encode([
@@ -114,7 +114,7 @@ try {
         // Registrar a consulta
         $stmt = $conn->prepare(
             "INSERT INTO consultas_log (cnpj_consultado, dominio_origem, custo) 
-                 VALUES (:cnpj, :dominio, 0.05)"
+                 VALUES (:cnpj, :dominio, 0.20)"
         );
         $stmt->bindParam(':cnpj', $cnpj);
         $stmt->bindParam(':dominio', $dominio);
@@ -122,8 +122,8 @@ try {
 
         // Atualizar créditos do usuário e verificar se foi atualizado
         $stmt = $conn->prepare(
-            "UPDATE usuarios SET credito = credito - 0.05 
-                 WHERE id = :usuario_id AND credito >= 0.05"
+            "UPDATE usuarios SET credito = credito - 0.20 
+                 WHERE id = :usuario_id AND credito >= 0.20"
         );
         $stmt->bindParam(':usuario_id', $usuario['id']);
         $stmt->execute();
